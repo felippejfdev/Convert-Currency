@@ -123,5 +123,6 @@ function changeCurrency() {
 }
 
 
+
 currencySelect.addEventListener("change", changeCurrency)// troca a moeda 
 convertButton.addEventListener("click", convertValues)//clique no botão converter
