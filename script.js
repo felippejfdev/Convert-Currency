@@ -6,7 +6,7 @@ const convertValues = async () => {
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert")// Valor em Real
     const currencyValueConverted = document.querySelector(".currency-value")// Outras moedas 
 
-    const data = await fetch("https://economia.awesomeapi.com.br/last/BRL-USD,BRL-EUR,BRL-GBP,BRL-ARS,USD-BRL,USD-EUR,USD-GBP,USD-ARS,EUR-BRL,EUR-USD,EUR-GBP,EUR-ARS,GBP-BRL,GBP-USD,GBP-EUR,ARS-BRL,ARS-USD,ARS-EUR,AUD-BRL,JPY-BRL,CAD-BRL").then(response => response.json())
+    const data = await fetch("https://economia.awesomeapi.com.br/last/BRL-USD,BRL-EUR,BRL-GBP,BRL-ARS,USD-BRL,USD-EUR,USD-GBP,USD-ARS,EUR-BRL,EUR-USD,EUR-GBP,EUR-ARS,GBP-BRL,GBP-USD,GBP-EUR,ARS-BRL,ARS-USD,ARS-EUR,AUD-BRL,CAD-BRL").then(response => response.json())
 
     console.log(data)
 
@@ -15,8 +15,7 @@ const convertValues = async () => {
     const libra = data.GBPBRL.bid
     const peso = data.ARSBRL.bid
     const dolarAustraliano = data.AUDBRL.bid
-    const IeneJapones = data.JPYBRL.bid
-    const dolarCanadense=data.CADBRL.bid
+    const dolarCanadense = data.CADBRL.bid
 
 
     if (currencySelect.value == "dolar") {
@@ -54,17 +53,11 @@ const convertValues = async () => {
         }).format(inputCurrencyValue / dolarAustraliano)
 
     }
-    
-    if (currencySelect.value == "Iene Japônes") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(inputCurrencyValue / IeneJapones)
-
-    }
 
 
-    if (currencySelect.value == "Dolar") {
+
+
+    if (currencySelect.value == "Dolar canadense") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("ca-CA", {
             style: "currency",
             currency: "CAD"
@@ -115,20 +108,18 @@ function changeCurrency() {
     }
 
 
-    if (currencySelect.value == "Iene") {
-        currencyName.innerHTML = "Iene"
-        currencyImage.src = "./assets/bandeira-do-japao-fb.jpg"
-    }
 
 
 
-    
-    if (currencySelect.value == "Dolar") {
+
+    if (currencySelect.value == "Dolar canadense") {
         currencyName.innerHTML = "Dólar Canadense"
         currencyImage.src = "assets/canada.jpg"
     }
 
-    convertValues() // converte o valor quando troca a moeda
+
+    convertValues()
+    // converte o valor quando troca a moeda
 }
 
 
